@@ -1,10 +1,10 @@
-🫸 Know Your Rights (KYR)
+# 🫸 Know Your Rights (KYR)
 
-📌 Overview
+- 📌 Overview
 
 Know Your Rights (KYR) is a MERN-based web application designed to educate users about their legal rights. The platform includes an AI-powered chatbot, interactive legal resources, and various educational games to engage users and enhance their understanding of fundamental rights.
 
-🚀 Features
+- 🚀 Features
 
 🤖 AI Chatbot: A virtual assistant built using Wit.ai to answer legal queries.
 
