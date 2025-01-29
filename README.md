@@ -1,40 +1,25 @@
-🎨 Frontend
-The frontend is a React-based application built with Vite, Tailwind CSS, and TypeScript. It includes:
+Know Your Rights (KYR)
 
-Key Files:
-index.html: The main HTML file for the frontend.
+Overview
 
-vite.config.ts: Configuration for Vite.
+Know Your Rights (KYR) is a MERN-based web application designed to educate users about their legal rights. The platform includes an AI-powered chatbot, interactive legal resources, and various educational games to engage users and enhance their understanding of fundamental rights.
 
-tailwind.config.js: Tailwind CSS configuration.
+Features
 
-postcss.config.js: PostCSS configuration.
+AI Chatbot: A virtual assistant built using Wit.ai to answer legal queries.
 
-tsconfig.json: TypeScript configuration.
+Legal Resources: Organized case-based information for different rights.
 
-Key Directories:
-src/: Contains the main application code.
+Interactive Games: Hangman, Boggle, Rock-Paper-Scissors, and a typing game to make learning fun.
 
-App.tsx: The root React component.
+Forms & Search: User-friendly forms for case submission and a search component for easy navigation.
 
-main.tsx: Entry point for the React app.
+Tech Stack
 
-index.css: Global styles.
+Frontend: Vite + React (TypeScript), Tailwind CSS
 
-vite-env.d.ts: TypeScript declarations for Vite.
+Backend: Node.js, Express, MongoDB, Mongoose
 
-assets/: Contains static assets like images and icons.
+AI/NLP: Wit.ai chatbot integration
 
-hangman/: Assets for the Hangman game.
-
-rps/: Assets for the Rock-Paper-Scissors game.
-
-components/: Contains reusable React components.
-
-Games: BoggleGame.tsx, hangman.tsx, rockps.tsx, scramble.tsx, typing.tsx.
-
-Utilities: DictionaryApp.tsx, quiz.tsx, searchcomponenet.tsx.
-
-UI Components: About.tsx, ChatModal.tsx, FloatingChat.tsx, Form.tsx, Form2.tsx, Form3.tsx, Header.tsx, Header2.tsx, Hero.tsx.
-
-layouts/: Contains layout components (GetStarted.tsx, Layout.tsx).
+Hosting: Vercel (backend), Netlify (frontend)
