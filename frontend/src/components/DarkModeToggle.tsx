@@ -2,20 +2,33 @@ import React, { useState, useEffect } from "react";
 
 const DarkModeToggle: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Check for stored theme preference in localStorage on component mount
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setIsDarkMode(true);
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    // Use stored theme if available, otherwise use system preference
+    const initialDarkMode = storedTheme 
+      ? storedTheme === "dark" 
+      : prefersDark;
+      
+    setIsDarkMode(initialDarkMode);
+    setIsMounted(true);
+    
+    if (initialDarkMode) {
       document.documentElement.classList.add("dark");
     } else {
-      setIsDarkMode(false);
       document.documentElement.classList.remove("dark");
     }
   }, []);
 
   const toggleDarkMode = () => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
 
@@ -27,30 +40,40 @@ const DarkModeToggle: React.FC = () => {
       localStorage.setItem("theme", "light");
       document.documentElement.classList.remove("dark");
     }
+
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
+  // Don't render until mounted to avoid flash of incorrect theme
+  if (!isMounted) {
+    return null;
+  }
+
   return (
-    <label className="inline-flex items-center cursor-pointer">
-      {/* Hidden checkbox that drives the toggle functionality */}
-      <input
-        type="checkbox"
-        checked={isDarkMode}
-        onChange={toggleDarkMode}
-        className="sr-only peer"
-      />
-      {/* Toggle switch UI */}
-      <div className="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:bg-blue-600 transition-colors">
-        <div
-          className={`absolute top-[2px] left-[2px] w-5 h-5 bg-white border border-gray-300 rounded-full transition-transform ${
-            isDarkMode ? "translate-x-5" : ""
-          } dark:border-gray-600`}
-        ></div>
+    <button
+      onClick={toggleDarkMode}
+      aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+      className="relative w-16 h-8 rounded-full focus:outline-none focus:ring-2  focus:ring-purple-800  transition-colors duration-200"
+    >
+      {/* Track with gradient background */}
+      <div className={`absolute inset-0 rounded-full transition-all duration-300 ${
+        isDarkMode 
+          ? 'bg-gradient-to-r from-indigo-800 to-purple-800' 
+          : 'bg-gradient-to-r from-yellow-300 to-orange-400'
+      }`}></div>
+      
+      {/* Thumb with sun/moon emoji and shine effect */}
+      <div className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-lg transform transition-all duration-300 flex items-center justify-center ${
+        isDarkMode ? 'translate-x-7 rotate-0' : 'translate-x-0 rotate-90'
+      }`}>
+        <span className={`text-lg transition-opacity duration-200 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+          {isDarkMode ? '🌙' : '☀️'}
+        </span>
       </div>
-      {/* Toggle label text */}
-      <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-600">
-        {isDarkMode ? "Light Mode" : "Dark Mode"}
-      </span>
-    </label>
+      
+      {/* Stars that appear in dark mode */}
+      
+    </button>
   );
 };
 

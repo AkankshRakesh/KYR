@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ showGetStarted = true }) => {
           >
             Dictionary
           </button>
-          <DarkModeToggle />
+          
           {showGetStarted ? (
             <Link
               to="/get-started"
@@ -88,6 +88,7 @@ const Header: React.FC<HeaderProps> = ({ showGetStarted = true }) => {
               Home
             </Link>
           )}
+          <DarkModeToggle />
         </div>
 
         {/* Mobile menu */}
