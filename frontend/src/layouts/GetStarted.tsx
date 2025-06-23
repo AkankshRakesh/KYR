@@ -180,7 +180,7 @@ const GetStarted = () => {
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white text-center py-4 mt-6">
-        © 2024 KYR. All rights reserved.
+        © 2025KYR. All rights reserved.
       </footer>
 
       {/* Floating Chat Button */}

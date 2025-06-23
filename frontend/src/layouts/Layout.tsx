@@ -25,7 +25,7 @@ const Layout = () => {
         <About />
       </main>
       <footer className="bg-gray-800 text-white text-center py-4 mt-6">
-        © 2024 KYR. All rights reserved.
+        © 2025KYR. All rights reserved.
       </footer>
       <div className="fixed bottom-8 right-7 flex items-center justify-center"> {/* Adjusted right value to move the button */}
         <div className="absolute w-24 h-24 bg-[#d42755] rounded-full animate-pulse -translate-x-1/4 translate-y-[-20px]" /> {/* Adjusted translate-x */}
